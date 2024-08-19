@@ -36,18 +36,6 @@ class OrderPage(BasePage):
         self.wait_and_click(OrderPageLocators.FINISH_ORDER_BUTTON)
         self.wait_and_click(OrderPageLocators.CONFIRM_BUTTON)
 
-
     @allure.step('Поиск поля заказа и заполнение значением первой страницы заказа')
     def find_and_send(self, locator, user_data):
         self.wait_and_find_element(locator).send_keys(user_data)
-
-    @allure.step('Проверка новых вкладок браузера, при наличии переключаемся в новую вкладку')
-    def wait_and_switch_tab(self):
-        original_window = self.driver.current_window_handle
-        for window_handle in self.driver.window_handles:
-            if window_handle != original_window:
-                self.driver.switch_to.window(window_handle)
-                self.wait_and_find_element(OrderPageLocators.DZEN_HEADER_LOGO)
-                break
-        return self.driver.current_url
-

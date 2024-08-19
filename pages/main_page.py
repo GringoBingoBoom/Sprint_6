@@ -10,13 +10,13 @@ class MainPage(BasePage):
     def scroll_and_click(self, locator):
         self.wait_and_find_element(MainPageLocator.HOME_HEADER)  # ждем появление заголовка на главной
         element = self.find_element(locator)
-        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(element)
         self.wait_element_clicable(element)
         element.click()
 
-    @allure.step('Создание локатора по тексту вопроса или ответа')
-    def create_locator_by_text(self, text):
-        return (By.XPATH, f'//*[text()="{text}"]')
+    @allure.step('Создание локатора по тексту вопроса или ответа по шаблону')
+    def create_locator_by_text(self, template, text):
+        return (template[0], template[1].substitute(text=text))
 
     @allure.step('Ожидание элемента и возвращение текста')
     def wait_and_get_text(self, locator):

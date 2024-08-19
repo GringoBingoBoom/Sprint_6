@@ -5,7 +5,7 @@ from locators.order_page_locators import OrderPageLocators
 from pages.order_page import OrderPage
 
 
-class TestMainQuestions:
+class TestOrderScooter:
 
     @allure.title('2.1 Заказ самоката. Создание заказа')
     @allure.description('Проверить, что появилось всплывающее окно с сообщением об успешном создании заказа.')
